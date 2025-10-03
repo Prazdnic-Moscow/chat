@@ -1,0 +1,21 @@
+# ninja log v6
+17	189	7812012827240240	MyApplication_autogen/timestamp	65dc856362aa98a7
+4319	4686	7812012870255280	MyApplication.exe	9db45ea40b35728f
+17	189	7812012827240240	MyApplication_autogen/mocs_compilation.cpp	65dc856362aa98a7
+17	189	7812012827240240	R:/informationsafe/lab1/MyApplication/build/Desktop_Qt_6_9_2_MinGW_64_bit-Debug/MyApplication_autogen/timestamp	65dc856362aa98a7
+865	4088	7811983557717637	CMakeFiles/MyApplication.dir/main.cpp.obj	f45e9d24a87df8ea
+17	189	7812012827240240	R:/informationsafe/lab1/MyApplication/build/Desktop_Qt_6_9_2_MinGW_64_bit-Debug/MyApplication_autogen/mocs_compilation.cpp	65dc856362aa98a7
+826	3851	7811988900859084	CMakeFiles/MyApplication.dir/MyApplication_autogen/mocs_compilation.cpp.obj	e808293befd2d8ce
+189	4318	7812012828963673	CMakeFiles/MyApplication.dir/mainwindow.cpp.obj	894a9c44fbe11693
+204	3085	7812012829109878	CMakeFiles/MyApplication.dir/secondwindow.cpp.obj	8e1bb7853d5e63b
+208	4128	7812012829109878	CMakeFiles/MyApplication.dir/thirdwindow.cpp.obj	81d70ca72904b640
+40	882	7812013350189588	MyApplication_autogen/timestamp	65dc856362aa98a7
+40	882	7812013350189588	MyApplication_autogen/mocs_compilation.cpp	65dc856362aa98a7
+40	882	7812013350189588	R:/informationsafe/lab1/MyApplication/build/Desktop_Qt_6_9_2_MinGW_64_bit-Debug/MyApplication_autogen/timestamp	65dc856362aa98a7
+40	882	7812013350189588	R:/informationsafe/lab1/MyApplication/build/Desktop_Qt_6_9_2_MinGW_64_bit-Debug/MyApplication_autogen/mocs_compilation.cpp	65dc856362aa98a7
+883	4643	7812013351189375	CMakeFiles/MyApplication.dir/MyApplication_autogen/mocs_compilation.cpp.obj	e808293befd2d8ce
+899	4644	7812013351270972	CMakeFiles/MyApplication.dir/main.cpp.obj	f45e9d24a87df8ea
+909	4667	7812013351364713	CMakeFiles/MyApplication.dir/secondwindow.cpp.obj	8e1bb7853d5e63b
+914	5596	7812013351499918	CMakeFiles/MyApplication.dir/thirdwindow.cpp.obj	81d70ca72904b640
+904	5742	7812013351364713	CMakeFiles/MyApplication.dir/mainwindow.cpp.obj	894a9c44fbe11693
+5742	6145	7812013399769034	MyApplication.exe	9db45ea40b35728f

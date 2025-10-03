@@ -1,0 +1,26 @@
+[
+{
+  "directory": "/mnt/r/informationsafe/lab1/backend/build",
+  "command": "/usr/bin/c++  -I/mnt/r/informationsafe/lab1/backend/my_project/. -isystem /usr/include/jsoncpp -g -std=gnu++17 -o CMakeFiles/my_app.dir/main.cc.o -c /mnt/r/informationsafe/lab1/backend/my_project/main.cc",
+  "file": "/mnt/r/informationsafe/lab1/backend/my_project/main.cc",
+  "output": "CMakeFiles/my_app.dir/main.cc.o"
+},
+{
+  "directory": "/mnt/r/informationsafe/lab1/backend/build",
+  "command": "/usr/bin/c++  -I/mnt/r/informationsafe/lab1/backend/my_project/. -isystem /usr/include/jsoncpp -g -std=gnu++17 -o CMakeFiles/my_app.dir/Controller/UserController.cc.o -c /mnt/r/informationsafe/lab1/backend/my_project/Controller/UserController.cc",
+  "file": "/mnt/r/informationsafe/lab1/backend/my_project/Controller/UserController.cc",
+  "output": "CMakeFiles/my_app.dir/Controller/UserController.cc.o"
+},
+{
+  "directory": "/mnt/r/informationsafe/lab1/backend/build",
+  "command": "/usr/bin/c++  -I/mnt/r/informationsafe/lab1/backend/my_project/. -isystem /usr/include/jsoncpp -g -std=gnu++17 -o CMakeFiles/my_app.dir/Service/UserService.cc.o -c /mnt/r/informationsafe/lab1/backend/my_project/Service/UserService.cc",
+  "file": "/mnt/r/informationsafe/lab1/backend/my_project/Service/UserService.cc",
+  "output": "CMakeFiles/my_app.dir/Service/UserService.cc.o"
+},
+{
+  "directory": "/mnt/r/informationsafe/lab1/backend/build",
+  "command": "/usr/bin/c++  -I/mnt/r/informationsafe/lab1/backend/my_project/. -isystem /usr/include/jsoncpp -g -std=gnu++17 -o CMakeFiles/my_app.dir/Repository/UserRepository.cc.o -c /mnt/r/informationsafe/lab1/backend/my_project/Repository/UserRepository.cc",
+  "file": "/mnt/r/informationsafe/lab1/backend/my_project/Repository/UserRepository.cc",
+  "output": "CMakeFiles/my_app.dir/Repository/UserRepository.cc.o"
+}
+]

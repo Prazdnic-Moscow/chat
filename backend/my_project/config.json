@@ -1,0 +1,20 @@
+{
+  "db_clients": [
+    {
+        "name": "default",
+        "host": "localhost",
+        "port": 5436,
+        "rdbms": "postgresql",
+        "dbname": "postgress",
+        "user": "postgress",
+        "passwd": "postgress",
+        "number_of_connections": 1,
+        "timeout": 10
+    }
+  ],
+  "app": {
+    "document_root": "./",
+    "run_as_daemon": false,
+    "relaunch_on_error": false
+  }
+}

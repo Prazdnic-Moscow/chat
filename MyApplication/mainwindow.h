@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QStackedWidget>  // Добавьте этот include
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -14,18 +15,20 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(QStackedWidget *stackedWidget = nullptr, QWidget *parent = nullptr);  // Измените конструктор
     ~MainWindow();
-    void showCaptcha();
 
 private slots:
     void on_pushButton_clicked();
-    void on_pushButton_2_clicked();
     void on_radioButton_clicked();
+    void on_pushButton_2_clicked();
 
 private:
     Ui::MainWindow *ui;
+    QStackedWidget *stackedWidget;  // Добавьте этот член
+    void showCaptcha();
     QString getMachineUUID();
     void checkMachineIdentification();
 };
+
 #endif // MAINWINDOW_H

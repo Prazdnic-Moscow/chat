@@ -38,22 +38,33 @@ public:
     QVBoxLayout *verticalLayout;
     QLineEdit *login_enter;
     QLineEdit *password_enter;
+    QSpacerItem *verticalSpacer;
+    QLabel *catLabel2;
     QPushButton *pushButton_3;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_8;
     QPushButton *pushButton_4;
-    QSpacerItem *verticalSpacer;
+    QSpacerItem *verticalSpacer_3;
     QRadioButton *radioButton_2;
+    QSpacerItem *verticalSpacer_2;
 
     void setupUi(QDialog *thirdwindow)
     {
         if (thirdwindow->objectName().isEmpty())
             thirdwindow->setObjectName("thirdwindow");
-        thirdwindow->resize(524, 481);
+        thirdwindow->resize(400, 760);
+        QSizePolicy sizePolicy(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Expanding);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(thirdwindow->sizePolicy().hasHeightForWidth());
+        thirdwindow->setSizePolicy(sizePolicy);
+        thirdwindow->setMinimumSize(QSize(400, 0));
         horizontalLayout_3 = new QHBoxLayout(thirdwindow);
         horizontalLayout_3->setObjectName("horizontalLayout_3");
         groupBox = new QGroupBox(thirdwindow);
         groupBox->setObjectName("groupBox");
+        sizePolicy.setHeightForWidth(groupBox->sizePolicy().hasHeightForWidth());
+        groupBox->setSizePolicy(sizePolicy);
         groupBox->setMinimumSize(QSize(0, 0));
         groupBox->setMaximumSize(QSize(700, 16777215));
         QFont font;
@@ -128,6 +139,17 @@ public:
 
         verticalLayout_3->addLayout(horizontalLayout);
 
+        verticalSpacer = new QSpacerItem(20, 99, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Fixed);
+
+        verticalLayout_3->addItem(verticalSpacer);
+
+        catLabel2 = new QLabel(groupBox);
+        catLabel2->setObjectName("catLabel2");
+        catLabel2->setMinimumSize(QSize(350, 350));
+        catLabel2->setAlignment(Qt::AlignmentFlag::AlignCenter);
+
+        verticalLayout_3->addWidget(catLabel2);
+
         pushButton_3 = new QPushButton(groupBox);
         pushButton_3->setObjectName("pushButton_3");
         pushButton_3->setMinimumSize(QSize(0, 29));
@@ -157,12 +179,12 @@ public:
 
         verticalLayout_4->addLayout(horizontalLayout_2);
 
+        verticalSpacer_3 = new QSpacerItem(20, 50, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::MinimumExpanding);
+
+        verticalLayout_4->addItem(verticalSpacer_3);
+
 
         verticalLayout_6->addLayout(verticalLayout_4);
-
-        verticalSpacer = new QSpacerItem(20, 346, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
-
-        verticalLayout_6->addItem(verticalSpacer);
 
         radioButton_2 = new QRadioButton(groupBox);
         radioButton_2->setObjectName("radioButton_2");
@@ -171,6 +193,10 @@ public:
         radioButton_2->setStyleSheet(QString::fromUtf8(""));
 
         verticalLayout_6->addWidget(radioButton_2);
+
+        verticalSpacer_2 = new QSpacerItem(20, 21, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Fixed);
+
+        verticalLayout_6->addItem(verticalSpacer_2);
 
 
         horizontalLayout_3->addWidget(groupBox);
@@ -187,6 +213,7 @@ public:
         groupBox->setTitle(QString());
         label_6->setText(QCoreApplication::translate("thirdwindow", "\320\233\320\276\320\263\320\270\320\275", nullptr));
         label_7->setText(QCoreApplication::translate("thirdwindow", "\320\237\320\260\321\200\320\276\320\273\321\214", nullptr));
+        catLabel2->setText(QString());
         pushButton_3->setText(QCoreApplication::translate("thirdwindow", "\320\222\320\276\320\271\321\202\320\270", nullptr));
         label_8->setText(QCoreApplication::translate("thirdwindow", "\320\243 \320\262\320\260\321\201 \320\275\320\265\321\202\321\203 \320\260\320\272\320\272\320\260\321\203\320\275\321\202\320\260?", nullptr));
         pushButton_4->setText(QCoreApplication::translate("thirdwindow", "\320\227\320\260\321\200\320\265\320\263\320\270\321\201\321\202\321\200\320\270\321\200\320\276\320\262\320\260\321\202\321\214\321\201\321\217", nullptr));

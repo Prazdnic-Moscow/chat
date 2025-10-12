@@ -4,8 +4,6 @@
 #include <QInputDialog>
 #include <QRandomGenerator>
 #include "secondwindow.h"
-#include "thirdwindow.h"
-#include <iostream>
 #include "QJsonObject"
 #include "QJsonDocument"
 #include "QtNetwork/QNetworkAccessManager"
@@ -25,6 +23,7 @@ MainWindow::MainWindow(QStackedWidget *stackedWidget, QWidget *parent)
 {
     ui->setupUi(this);
     {
+        QLabel *catLabel = findChild<QLabel*>("catLabel");
         ui->radioButton->setChecked(false);  // Исправил на radioButton (без подчеркивания)
         MainWindow::on_radioButton_clicked();
         //QTimer::singleShot(0, this, &MainWindow::checkMachineIdentification);
@@ -173,7 +172,8 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_pushButton_2_clicked()  // Кнопка "Войти"
 {
-    if (stackedWidget) {
+    if (stackedWidget)
+    {
         stackedWidget->setCurrentIndex(1);  // Переключаем на окно входа
     }
 }
@@ -189,3 +189,5 @@ void MainWindow::on_radioButton_clicked()
         this->setStyleSheet(CommonUtils::getLightTheme("#MainWindow"));
     }
 }
+
+

@@ -38,10 +38,7 @@ QString CommonUtils::getDarkTheme(const QString &windowClass)
 {
     return QString(R"(
         %1 {
-            background-image: url("../../raduga_dark.jpg");
-            background-repeat: no-repeat;
-            background-position: center;
-            background-color: transparent;
+            background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #1a1a1a, stop:0.5 #2d2d2d, stop:1 #1a1a1a);
             border: 2px solid gray;
             border-radius: 5px;
         }
@@ -51,6 +48,14 @@ QString CommonUtils::getDarkTheme(const QString &windowClass)
             border: 1px solid #cccccc;
             color: white;
         }
+
+        %1 QLabel[objectName="catLabel"],
+        %1 QLabel[objectName="catLabel2"] {
+            background: transparent;
+            border: none;
+            image: url(../../cat1.png);
+        }
+
         %1 QLabel {
             color: white;
             background-color: rgba(80, 80, 80, 220);
@@ -145,10 +150,7 @@ QString CommonUtils::getLightTheme(const QString &windowClass)
 {
     return QString(R"(
         %1 {
-            background-image: url("../../raduga.jpg");
-            background-repeat: no-repeat;
-            background-position: center;
-            background-color: transparent;
+            background: qlineargradient(x1:0, y1:0, x2:1, y2:1,stop:0 #f8c8dc, stop:0.5 #f0a6ca, stop:1 #f8c8dc);
             border: 2px solid gray;
             border-radius: 5px;
         }
@@ -158,6 +160,14 @@ QString CommonUtils::getLightTheme(const QString &windowClass)
             border: 1px solid #444444;
             color: black;
         }
+
+        %1 QLabel[objectName="catLabel"],
+        %1 QLabel[objectName="catLabel2"] {
+            background: transparent;
+            border: none;
+            image: url(../../cat1.png);
+        }
+
         %1 QLabel {
             color: black;
             background-color: rgba(255, 105, 180, 220);

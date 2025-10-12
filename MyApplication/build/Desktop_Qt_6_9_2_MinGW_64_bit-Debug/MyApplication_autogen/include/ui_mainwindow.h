@@ -48,6 +48,7 @@ public:
     QLineEdit *email;
     QLineEdit *phone;
     QLineEdit *adress;
+    QLabel *catLabel;
     QPushButton *pushButton;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_6;
@@ -61,7 +62,8 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(578, 451);
+        MainWindow->resize(400, 760);
+        MainWindow->setMinimumSize(QSize(400, 0));
         MainWindow->setStyleSheet(QString::fromUtf8(""));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
@@ -203,6 +205,16 @@ public:
 
         verticalLayout_3->addLayout(horizontalLayout);
 
+        catLabel = new QLabel(groupBox);
+        catLabel->setObjectName("catLabel");
+        catLabel->setMinimumSize(QSize(350, 350));
+        catLabel->setScaledContents(true);
+        catLabel->setAlignment(Qt::AlignmentFlag::AlignCenter);
+        catLabel->setWordWrap(false);
+        catLabel->setOpenExternalLinks(false);
+
+        verticalLayout_3->addWidget(catLabel);
+
         pushButton = new QPushButton(groupBox);
         pushButton->setObjectName("pushButton");
         pushButton->setMinimumSize(QSize(0, 29));
@@ -232,12 +244,12 @@ public:
 
         verticalLayout_4->addLayout(horizontalLayout_2);
 
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::MinimumExpanding);
+
+        verticalLayout_4->addItem(verticalSpacer);
+
 
         verticalLayout_6->addLayout(verticalLayout_4);
-
-        verticalSpacer = new QSpacerItem(20, 346, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
-
-        verticalLayout_6->addItem(verticalSpacer);
 
         radioButton = new QRadioButton(groupBox);
         radioButton->setObjectName("radioButton");
@@ -253,7 +265,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 578, 22));
+        menubar->setGeometry(QRect(0, 0, 400, 22));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
@@ -273,6 +285,7 @@ public:
         label_4->setText(QCoreApplication::translate("MainWindow", "\320\237\320\276\321\207\321\202\320\260", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", " \320\242\320\265\320\273\320\265\321\204\320\276\320\275 ", nullptr));
         label_5->setText(QCoreApplication::translate("MainWindow", "\320\220\320\264\321\200\320\265\321\201", nullptr));
+        catLabel->setText(QString());
         pushButton->setText(QCoreApplication::translate("MainWindow", "\320\227\320\260\321\200\320\265\320\263\320\270\321\201\321\202\321\200\320\270\321\200\320\276\320\262\320\260\321\202\321\214\321\201\321\217", nullptr));
         label_6->setText(QCoreApplication::translate("MainWindow", "\320\243\320\266\320\265 \320\265\321\201\321\202\321\214 \320\260\320\272\320\272\320\260\321\203\320\275\321\202?", nullptr));
         pushButton_2->setText(QCoreApplication::translate("MainWindow", "\320\222\320\276\320\271\321\202\320\270", nullptr));

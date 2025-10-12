@@ -15,7 +15,6 @@ int main(int argc, char *argv[])
     // Добавляем окна в stacked widget
     stackedWidget->addWidget(mainWindow);  // индекс 0 - регистрация
     stackedWidget->addWidget(loginWindow); // индекс 1 - вход
-
     stackedWidget->setWindowFlags(Qt::Window | Qt::WindowMinimizeButtonHint |
                                   Qt::WindowMaximizeButtonHint | Qt::WindowCloseButtonHint);
     stackedWidget->show();

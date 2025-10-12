@@ -23,6 +23,8 @@ thirdwindow::thirdwindow(QStackedWidget *stackedWidget, QWidget *parent)
 {
     ui->setupUi(this);
     {
+        this->setMinimumHeight(0);  // Разрешить сжатие окна по вертикали
+        this->setMinimumWidth(0);   // Разрешить сжатие по горизонтали, если нужно
 
         ui->radioButton_2->setChecked(false);
         thirdwindow::on_radioButton_2_clicked();

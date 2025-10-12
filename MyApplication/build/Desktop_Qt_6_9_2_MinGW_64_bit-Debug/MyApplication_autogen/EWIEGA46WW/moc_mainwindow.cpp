@@ -41,16 +41,16 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         "MainWindow",
         "on_pushButton_clicked",
         "",
-        "on_pushButton_2_clicked",
-        "on_radioButton_clicked"
+        "on_radioButton_clicked",
+        "on_pushButton_2_clicked"
     };
 
     QtMocHelpers::UintData qt_methods {
         // Slot 'on_pushButton_clicked'
         QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'on_pushButton_2_clicked'
-        QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'on_radioButton_clicked'
+        QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'on_pushButton_2_clicked'
         QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
@@ -76,8 +76,8 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: _t->on_pushButton_clicked(); break;
-        case 1: _t->on_pushButton_2_clicked(); break;
-        case 2: _t->on_radioButton_clicked(); break;
+        case 1: _t->on_radioButton_clicked(); break;
+        case 2: _t->on_pushButton_2_clicked(); break;
         default: ;
         }
     }

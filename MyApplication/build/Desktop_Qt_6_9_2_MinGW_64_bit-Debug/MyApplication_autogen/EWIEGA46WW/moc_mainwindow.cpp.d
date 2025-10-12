@@ -152,8 +152,11 @@ R:/informationsafe/lab1/MyApplication/build/Desktop_Qt_6_9_2_MinGW_64_bit-Debug/
   C:/Qt/6.9.2/mingw_64/include/QtGui/qwindowdefs.h \
   C:/Qt/6.9.2/mingw_64/include/QtGui/qwindowdefs_win.h \
   C:/Qt/6.9.2/mingw_64/include/QtWidgets/QMainWindow \
+  C:/Qt/6.9.2/mingw_64/include/QtWidgets/QStackedWidget \
+  C:/Qt/6.9.2/mingw_64/include/QtWidgets/qframe.h \
   C:/Qt/6.9.2/mingw_64/include/QtWidgets/qmainwindow.h \
   C:/Qt/6.9.2/mingw_64/include/QtWidgets/qsizepolicy.h \
+  C:/Qt/6.9.2/mingw_64/include/QtWidgets/qstackedwidget.h \
   C:/Qt/6.9.2/mingw_64/include/QtWidgets/qtabwidget.h \
   C:/Qt/6.9.2/mingw_64/include/QtWidgets/qtwidgets-config.h \
   C:/Qt/6.9.2/mingw_64/include/QtWidgets/qtwidgetsexports.h \

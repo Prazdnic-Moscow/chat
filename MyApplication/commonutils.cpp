@@ -93,19 +93,19 @@ QString CommonUtils::getDarkTheme(const QString &windowClass)
             color: white;
             background-color: rgba(80, 80, 80, 220);
             border: 1px solid #cccccc;
-            border-radius: 7px;
+            border-radius: 8px;
         }
         %1 QLineEdit {
             background-color: rgba(80, 80, 80, 220);
             color: white;
             border: 1px solid #cccccc;
-            border-radius: 7px;
+            border-radius: 8px;
         }
         %1 QRadioButton {
             color: white;
             border: 1px solid #cccccc;
             background-color: rgba(80, 80, 80, 220);
-            border-radius: 7px;
+            border-radius: 8px;
         }
 
         /* Стандартные стили для QMessageBox */
@@ -204,20 +204,20 @@ QString CommonUtils::getLightTheme(const QString &windowClass)
         %1 QLabel {
             color: black;
             background-color: rgba(255, 105, 180, 220);
-            border-radius: 7px;
+            border-radius: 8px;
             border: 1px solid #444444;
         }
         %1 QLineEdit {
             background-color: rgba(255, 105, 180, 220);
             color: black;
             border: 1px solid #444444;
-            border-radius: 7px;
+            border-radius: 8px;
         }
         %1 QRadioButton {
             color: black;
             background-color: rgba(255, 105, 180, 220);
             border: 1px solid #444444;
-            border-radius: 7px;
+            border-radius: 8px;
         }
 
         /* Стандартные стили для QMessageBox */

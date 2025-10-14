@@ -6,13 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>420</width>
     <height>760</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>400</width>
+    <width>420</width>
     <height>0</height>
    </size>
   </property>
@@ -74,7 +74,7 @@
                 <widget class="QLabel" name="label">
                  <property name="minimumSize">
                   <size>
-                   <width>0</width>
+                   <width>85</width>
                    <height>30</height>
                   </size>
                  </property>
@@ -87,7 +87,7 @@
                  <property name="font">
                   <font>
                    <family>Times New Roman</family>
-                   <pointsize>16</pointsize>
+                   <pointsize>15</pointsize>
                   </font>
                  </property>
                  <property name="styleSheet">
@@ -118,7 +118,7 @@
                  <property name="font">
                   <font>
                    <family>Times New Roman</family>
-                   <pointsize>16</pointsize>
+                   <pointsize>15</pointsize>
                   </font>
                  </property>
                  <property name="styleSheet">
@@ -149,7 +149,7 @@
                  <property name="font">
                   <font>
                    <family>Times New Roman</family>
-                   <pointsize>16</pointsize>
+                   <pointsize>15</pointsize>
                   </font>
                  </property>
                  <property name="styleSheet">
@@ -180,7 +180,7 @@
                  <property name="font">
                   <font>
                    <family>Times New Roman</family>
-                   <pointsize>16</pointsize>
+                   <pointsize>15</pointsize>
                   </font>
                  </property>
                  <property name="styleSheet">
@@ -211,7 +211,7 @@
                  <property name="font">
                   <font>
                    <family>Times New Roman</family>
-                   <pointsize>16</pointsize>
+                   <pointsize>15</pointsize>
                   </font>
                  </property>
                  <property name="styleSheet">
@@ -418,7 +418,7 @@
              <property name="font">
               <font>
                <family>Times New Roman</family>
-               <pointsize>16</pointsize>
+               <pointsize>15</pointsize>
               </font>
              </property>
              <property name="styleSheet">
@@ -435,23 +435,38 @@
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <item>
             <widget class="QLabel" name="label_6">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>30</height>
+              </size>
+             </property>
              <property name="font">
               <font>
                <family>Times New Roman</family>
-               <pointsize>16</pointsize>
+               <pointsize>15</pointsize>
               </font>
              </property>
              <property name="text">
               <string>Уже есть аккаунт?</string>
              </property>
+             <property name="alignment">
+              <set>Qt::AlignmentFlag::AlignCenter</set>
+             </property>
             </widget>
            </item>
            <item>
             <widget class="QPushButton" name="pushButton_2">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>30</height>
+              </size>
+             </property>
              <property name="font">
               <font>
                <family>Times New Roman</family>
-               <pointsize>16</pointsize>
+               <pointsize>15</pointsize>
               </font>
              </property>
              <property name="text">
@@ -481,6 +496,12 @@
        </item>
        <item>
         <widget class="QRadioButton" name="radioButton">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
          <property name="maximumSize">
           <size>
            <width>150</width>
@@ -490,7 +511,7 @@
          <property name="font">
           <font>
            <family>Times New Roman</family>
-           <pointsize>16</pointsize>
+           <pointsize>15</pointsize>
           </font>
          </property>
          <property name="styleSheet">
@@ -511,7 +532,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>400</width>
+     <width>420</width>
      <height>22</height>
     </rect>
    </property>

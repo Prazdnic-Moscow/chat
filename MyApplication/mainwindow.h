@@ -32,6 +32,8 @@ class MainWindow : public QMainWindow
         QStackedWidget *stackedWidget;
         void checkMachineIdentification();
         QWidget *loadingOverlay = nullptr;
+        bool overlayActive = false;
+        int count = 0;
 };
 
 #endif

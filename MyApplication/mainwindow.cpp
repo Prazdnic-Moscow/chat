@@ -13,8 +13,6 @@
 #include <QTimer>
 #include "commonutils.h"
 
-int count =0;
-
 MainWindow::MainWindow(QStackedWidget *stackedWidget, QWidget *parent)
     : QMainWindow(parent),
     ui(new Ui::MainWindow),
@@ -31,6 +29,7 @@ MainWindow::MainWindow(QStackedWidget *stackedWidget, QWidget *parent)
     loadingOverlay->setAttribute(Qt::WA_NoSystemBackground, true);
     loadingOverlay->setAttribute(Qt::WA_TransparentForMouseEvents, false);
     loadingOverlay->setWindowModality(Qt::ApplicationModal);
+    loadingOverlay->setGeometry(0, 0, 420, 760);
     loadingOverlay->show();
 
     QLabel *loadingLabel = new QLabel("🔄 Проверка устройства...", loadingOverlay);
@@ -38,6 +37,7 @@ MainWindow::MainWindow(QStackedWidget *stackedWidget, QWidget *parent)
     loadingLabel->setAlignment(Qt::AlignCenter);
     loadingLabel->setGeometry(0, 0, loadingOverlay->width(), loadingOverlay->height());
     loadingLabel->show();
+    overlayActive = true;
 
 
     QString machineUUID = CommonUtils::getMachineUUID().trimmed().toUpper();
@@ -64,10 +64,15 @@ MainWindow::MainWindow(QStackedWidget *stackedWidget, QWidget *parent)
 
     connect(reply, &QNetworkReply::finished, this, [this, reply]()
     {
-        // Скрываем оверлей после завершения запроса
-        loadingOverlay->close();
-        loadingOverlay->deleteLater();
+        if (loadingOverlay)
+        {
+            loadingOverlay->hide();
+            loadingOverlay->deleteLater();
+            loadingOverlay = nullptr;
+            overlayActive = false;
 
+            disconnect(this, &MainWindow::resizeEvent, nullptr, nullptr);
+        }
         if (reply->error() == QNetworkReply::NoError)
         {
             QMessageBox::information(this, "Успех", "Ваша машина есть в базе.");
@@ -88,15 +93,15 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
 void MainWindow::resizeEvent(QResizeEvent *event)
 {
     QMainWindow::resizeEvent(event);
 
-    if (loadingOverlay)
+    // проверяем, что overlay существует и видим
+    if (loadingOverlay && overlayActive && loadingOverlay->isVisible())
     {
-        loadingOverlay->setGeometry(this->rect()); // растягиваем на весь MainWindow
-        // если есть label внутри, можно тоже растянуть
+        qDebug() << "зашли";
+        loadingOverlay->setGeometry(this->rect());
         if (auto label = loadingOverlay->findChild<QLabel*>())
         {
             label->setGeometry(0, 0, loadingOverlay->width(), loadingOverlay->height());
@@ -144,6 +149,12 @@ void MainWindow::on_pushButton_clicked()
                              "- Состоять из 11 цифр\n"
                              "- Начинаться с 7 или 8\n"
                              "- Содержать только цифры");
+        count = count + 1;
+        if (CommonUtils::showCaptcha(this, count))
+        {
+            count = 0;
+            return;
+        }
         return;
     }
 
@@ -151,6 +162,12 @@ void MainWindow::on_pushButton_clicked()
     if (email.length() < 6 || !email.contains('@') || !email.contains('.') || email.indexOf('@') < 1)
     {
         QMessageBox::warning(this, "Предупреждение", "Email должен быть в формате example@domain.com и содержать не менее 6 символов");
+        count = count + 1;
+        if (CommonUtils::showCaptcha(this, count))
+        {
+            count = 0;
+            return;
+        }
         return;
     }
 
@@ -158,7 +175,13 @@ void MainWindow::on_pushButton_clicked()
         if (adress.length() < 5)
     {
         QMessageBox::warning(this, "Предупреждение", "Адрес должен содержать не менее 5 символов");
-        return;
+            count = count + 1;
+            if (CommonUtils::showCaptcha(this, count))
+            {
+                count = 0;
+                return;
+            }
+            return;
     }
 
     // Создаём JSON объект

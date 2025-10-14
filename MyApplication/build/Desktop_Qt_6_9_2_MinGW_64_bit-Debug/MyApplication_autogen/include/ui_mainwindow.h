@@ -62,8 +62,8 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(400, 760);
-        MainWindow->setMinimumSize(QSize(400, 0));
+        MainWindow->resize(420, 760);
+        MainWindow->setMinimumSize(QSize(420, 0));
         MainWindow->setStyleSheet(QString::fromUtf8(""));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
@@ -95,9 +95,12 @@ public:
         verticalLayout_2->setObjectName("verticalLayout_2");
         label = new QLabel(groupBox);
         label->setObjectName("label");
-        label->setMinimumSize(QSize(0, 30));
+        label->setMinimumSize(QSize(85, 30));
         label->setMaximumSize(QSize(16777215, 30));
-        label->setFont(font);
+        QFont font1;
+        font1.setFamilies({QString::fromUtf8("Times New Roman")});
+        font1.setPointSize(15);
+        label->setFont(font1);
         label->setStyleSheet(QString::fromUtf8(""));
         label->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
@@ -107,7 +110,7 @@ public:
         label_2->setObjectName("label_2");
         label_2->setMinimumSize(QSize(0, 30));
         label_2->setMaximumSize(QSize(16777215, 30));
-        label_2->setFont(font);
+        label_2->setFont(font1);
         label_2->setStyleSheet(QString::fromUtf8(""));
         label_2->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
@@ -117,7 +120,7 @@ public:
         label_4->setObjectName("label_4");
         label_4->setMinimumSize(QSize(0, 30));
         label_4->setMaximumSize(QSize(16777215, 30));
-        label_4->setFont(font);
+        label_4->setFont(font1);
         label_4->setStyleSheet(QString::fromUtf8(""));
         label_4->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
@@ -127,7 +130,7 @@ public:
         label_3->setObjectName("label_3");
         label_3->setMinimumSize(QSize(0, 30));
         label_3->setMaximumSize(QSize(16777215, 30));
-        label_3->setFont(font);
+        label_3->setFont(font1);
         label_3->setStyleSheet(QString::fromUtf8(""));
         label_3->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
@@ -137,7 +140,7 @@ public:
         label_5->setObjectName("label_5");
         label_5->setMinimumSize(QSize(0, 30));
         label_5->setMaximumSize(QSize(16777215, 30));
-        label_5->setFont(font);
+        label_5->setFont(font1);
         label_5->setStyleSheet(QString::fromUtf8(""));
         label_5->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
@@ -219,7 +222,7 @@ public:
         pushButton->setObjectName("pushButton");
         pushButton->setMinimumSize(QSize(0, 29));
         pushButton->setMaximumSize(QSize(16777215, 30));
-        pushButton->setFont(font);
+        pushButton->setFont(font1);
         pushButton->setStyleSheet(QString::fromUtf8(""));
 
         verticalLayout_3->addWidget(pushButton);
@@ -231,13 +234,16 @@ public:
         horizontalLayout_2->setObjectName("horizontalLayout_2");
         label_6 = new QLabel(groupBox);
         label_6->setObjectName("label_6");
-        label_6->setFont(font);
+        label_6->setMinimumSize(QSize(0, 30));
+        label_6->setFont(font1);
+        label_6->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
         horizontalLayout_2->addWidget(label_6);
 
         pushButton_2 = new QPushButton(groupBox);
         pushButton_2->setObjectName("pushButton_2");
-        pushButton_2->setFont(font);
+        pushButton_2->setMinimumSize(QSize(0, 30));
+        pushButton_2->setFont(font1);
 
         horizontalLayout_2->addWidget(pushButton_2);
 
@@ -253,8 +259,9 @@ public:
 
         radioButton = new QRadioButton(groupBox);
         radioButton->setObjectName("radioButton");
+        radioButton->setMinimumSize(QSize(0, 30));
         radioButton->setMaximumSize(QSize(150, 16777215));
-        radioButton->setFont(font);
+        radioButton->setFont(font1);
         radioButton->setStyleSheet(QString::fromUtf8(""));
 
         verticalLayout_6->addWidget(radioButton);
@@ -265,7 +272,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 400, 22));
+        menubar->setGeometry(QRect(0, 0, 420, 22));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");

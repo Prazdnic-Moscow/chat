@@ -28,6 +28,7 @@ class thirdwindow : public QDialog
         Ui::thirdwindow *ui;
         QStackedWidget *stackedWidget;
         void showCaptcha_3();
+        int count_3 = 0;
 };
 
 #endif

@@ -15,7 +15,7 @@
 #include <QDebug>
 #include <QTimer>
 #include "commonutils.h"
-int count_3 = 0;
+
 thirdwindow::thirdwindow(QStackedWidget *stackedWidget, QWidget *parent):
     QDialog(parent),
     ui(new Ui::thirdwindow),
@@ -110,6 +110,11 @@ void thirdwindow::on_pushButton_3_clicked()
         else
         {
             QMessageBox::warning(this, "Ошибка", "Ошибка при регистрации:\n Неверный Логин или Пароль");
+            count_3 = count_3 + 1;
+            if (CommonUtils::showCaptcha(this, count_3))
+            {
+                count_3 = 0;
+            }
         }
         reply->deleteLater();
     });

@@ -52,13 +52,13 @@ public:
     {
         if (thirdwindow->objectName().isEmpty())
             thirdwindow->setObjectName("thirdwindow");
-        thirdwindow->resize(400, 760);
+        thirdwindow->resize(420, 761);
         QSizePolicy sizePolicy(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(thirdwindow->sizePolicy().hasHeightForWidth());
         thirdwindow->setSizePolicy(sizePolicy);
-        thirdwindow->setMinimumSize(QSize(400, 0));
+        thirdwindow->setMinimumSize(QSize(420, 0));
         horizontalLayout_3 = new QHBoxLayout(thirdwindow);
         horizontalLayout_3->setObjectName("horizontalLayout_3");
         groupBox = new QGroupBox(thirdwindow);
@@ -89,9 +89,12 @@ public:
         verticalLayout_2->setObjectName("verticalLayout_2");
         label_6 = new QLabel(groupBox);
         label_6->setObjectName("label_6");
-        label_6->setMinimumSize(QSize(0, 30));
+        label_6->setMinimumSize(QSize(85, 30));
         label_6->setMaximumSize(QSize(16777215, 30));
-        label_6->setFont(font);
+        QFont font1;
+        font1.setFamilies({QString::fromUtf8("Times New Roman")});
+        font1.setPointSize(15);
+        label_6->setFont(font1);
         label_6->setStyleSheet(QString::fromUtf8(""));
         label_6->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
@@ -101,7 +104,7 @@ public:
         label_7->setObjectName("label_7");
         label_7->setMinimumSize(QSize(0, 30));
         label_7->setMaximumSize(QSize(16777215, 30));
-        label_7->setFont(font);
+        label_7->setFont(font1);
         label_7->setStyleSheet(QString::fromUtf8(""));
         label_7->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
@@ -152,9 +155,9 @@ public:
 
         pushButton_3 = new QPushButton(groupBox);
         pushButton_3->setObjectName("pushButton_3");
-        pushButton_3->setMinimumSize(QSize(0, 29));
+        pushButton_3->setMinimumSize(QSize(0, 30));
         pushButton_3->setMaximumSize(QSize(16777215, 30));
-        pushButton_3->setFont(font);
+        pushButton_3->setFont(font1);
         pushButton_3->setStyleSheet(QString::fromUtf8(""));
 
         verticalLayout_3->addWidget(pushButton_3);
@@ -166,13 +169,16 @@ public:
         horizontalLayout_2->setObjectName("horizontalLayout_2");
         label_8 = new QLabel(groupBox);
         label_8->setObjectName("label_8");
-        label_8->setFont(font);
+        label_8->setMinimumSize(QSize(0, 30));
+        label_8->setFont(font1);
+        label_8->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
         horizontalLayout_2->addWidget(label_8);
 
         pushButton_4 = new QPushButton(groupBox);
         pushButton_4->setObjectName("pushButton_4");
-        pushButton_4->setFont(font);
+        pushButton_4->setMinimumSize(QSize(0, 30));
+        pushButton_4->setFont(font1);
 
         horizontalLayout_2->addWidget(pushButton_4);
 
@@ -188,8 +194,9 @@ public:
 
         radioButton_2 = new QRadioButton(groupBox);
         radioButton_2->setObjectName("radioButton_2");
+        radioButton_2->setMinimumSize(QSize(0, 30));
         radioButton_2->setMaximumSize(QSize(150, 16777215));
-        radioButton_2->setFont(font);
+        radioButton_2->setFont(font1);
         radioButton_2->setStyleSheet(QString::fromUtf8(""));
 
         verticalLayout_6->addWidget(radioButton_2);

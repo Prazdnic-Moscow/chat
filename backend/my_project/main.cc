@@ -19,7 +19,7 @@ int main()
             std::list<std::string> devices = {
                 "9CC28570-30B9-0000-0000-000000000000",
                 "device002", 
-                "device003"
+                "20220526-B48C-9DCA-727A-B48C9DCA727B"
             };
             userservice.clean_allowed_devices();
             userservice.allow_devices(devices);

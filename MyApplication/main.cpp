@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "thirdwindow.h"
+#include "secondwindow.h"
 #include <QApplication>
 #include <QStackedWidget>
 
@@ -11,10 +12,11 @@ int main(int argc, char *argv[])
 
     MainWindow *mainWindow = new MainWindow(stackedWidget);
     thirdwindow *loginWindow = new thirdwindow(stackedWidget);
+    secondwindow *appWindow = new secondwindow(stackedWidget);
 
-    // Добавляем окна в stacked widget
-    stackedWidget->addWidget(mainWindow);  // индекс 0 - регистрация
-    stackedWidget->addWidget(loginWindow); // индекс 1 - вход
+    stackedWidget->addWidget(mainWindow);  // индекс 0
+    stackedWidget->addWidget(loginWindow); // индекс 1
+    stackedWidget->addWidget(appWindow); // индекс 2
     stackedWidget->setWindowFlags(Qt::Window | Qt::WindowMinimizeButtonHint |
                                   Qt::WindowMaximizeButtonHint | Qt::WindowCloseButtonHint);
     stackedWidget->show();

@@ -26,7 +26,9 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ${PROJECT_SOURCES}
         secondwindow.h secondwindow.cpp secondwindow.ui
         thirdwindow.h thirdwindow.cpp thirdwindow.ui
-        commonutils.h commonutils.cpp commonutils.ui
+        commonutils.h commonutils.cpp
+
+
 
     )
 # Define target properties for Android with Qt 6 as:

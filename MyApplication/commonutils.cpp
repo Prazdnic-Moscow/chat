@@ -1,4 +1,12 @@
 #include "commonutils.h"
+#include <QProcess>
+#include "QJsonObject"
+#include "QJsonDocument"
+#include "QtNetwork/QNetworkAccessManager"
+#include "QtNetwork/QNetworkReply"
+#include <QtNetwork/QNetworkRequest>
+#include <QDebug>
+#include <QTimer>
 CommonUtils::CommonUtils(QObject *parent) : QObject(parent) {}
 
 bool CommonUtils::showCaptcha(QWidget *parent, int &attemptCount)
@@ -6,7 +14,6 @@ bool CommonUtils::showCaptcha(QWidget *parent, int &attemptCount)
     if (attemptCount == 3)
     {
         showCaptchaDialog(parent);
-        attemptCount = 0;
         return true;
     }
     return false;
@@ -17,8 +24,8 @@ void CommonUtils::showCaptchaDialog(QWidget *parent)
     int number_1 = QRandomGenerator::global()->bounded(1, 10);
     int number_2 = QRandomGenerator::global()->bounded(1, 10);
     int captcha = number_1 + number_2;
-
     bool ok;
+
     QString question = QString("Решите пример: %1 + %2 = ?").arg(number_1).arg(number_2);
 
     QString text = QInputDialog::getText(parent, "Капча", question, QLineEdit::Normal, "", &ok);
@@ -26,12 +33,38 @@ void CommonUtils::showCaptchaDialog(QWidget *parent)
     if (!ok || text != QString::number(captcha))
     {
         QMessageBox::warning(parent, "Ошибка", "Капча введена неверно!");
-        showCaptchaDialog(parent); // повторяем до успеха
+        showCaptchaDialog(parent);
     }
     else
     {
         QMessageBox::information(parent, "Успех", "Капча пройдена!");
     }
+}
+
+
+QString CommonUtils::getMachineUUID()
+{
+#ifdef Q_OS_WIN
+    QProcess process;
+    // Запуск PowerShell и получение UUID
+    process.start("powershell", QStringList()
+                                    << "-Command"
+                                    << "(Get-CimInstance Win32_ComputerSystemProduct).UUID");
+
+    if (process.waitForFinished(3000))
+    {
+        QString output = QString::fromLocal8Bit(process.readAllStandardOutput()).trimmed();
+        if (!output.isEmpty() && output.length() == 36 && output.contains('-'))
+        {
+            return output;
+        }
+    }
+    else
+    {
+        qDebug() << "Timeout while getting UUID";
+    }
+#endif
+    return "unknown_uuid";
 }
 
 QString CommonUtils::getDarkTheme(const QString &windowClass)

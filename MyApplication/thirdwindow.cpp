@@ -16,19 +16,15 @@
 #include <QTimer>
 #include "commonutils.h"
 int count_3 = 0;
-thirdwindow::thirdwindow(QStackedWidget *stackedWidget, QWidget *parent)
-    : QDialog(parent)
-    , ui(new Ui::thirdwindow)
-    , stackedWidget(stackedWidget)
+thirdwindow::thirdwindow(QStackedWidget *stackedWidget, QWidget *parent):
+    QDialog(parent),
+    ui(new Ui::thirdwindow),
+    stackedWidget(stackedWidget)
 {
     ui->setupUi(this);
     {
-        this->setMinimumHeight(0);  // Разрешить сжатие окна по вертикали
-        this->setMinimumWidth(0);   // Разрешить сжатие по горизонтали, если нужно
-
         ui->radioButton_2->setChecked(false);
         thirdwindow::on_radioButton_2_clicked();
-        // QTimer::singleShot(0, this, &MainWindow::checkMachineIdentification);
     }
 }
 
@@ -60,6 +56,14 @@ void thirdwindow::on_radioButton_2_clicked()
 
 void thirdwindow::on_pushButton_3_clicked()
 {
+     QString machineUUID = CommonUtils::getMachineUUID();
+    // Проверяем UUID перед регистрацией
+    if (machineUUID == "unknown_uuid")
+    {
+        QMessageBox::critical(this, "Ошибка", "Не удалось определить устройство!");
+        return;
+    }
+
     QString login = ui->login_enter->text();
     QString password = ui->password_enter->text();
     if (login.length() != 4 || password.length() != 6)
@@ -80,6 +84,7 @@ void thirdwindow::on_pushButton_3_clicked()
     QJsonObject json;
     json["username"] = login;
     json["password"] = password;
+    json["machine_id"] = machineUUID;
     // Преобразуем в JSON документ и в QByteArray
     QJsonDocument doc(json);
     QByteArray data = doc.toJson();
@@ -100,14 +105,11 @@ void thirdwindow::on_pushButton_3_clicked()
         {
             QByteArray response = reply->readAll();
             QMessageBox::information(this, "Успех", "Регистрация прошла успешно!");
-            this->hide();
-            secondwindow *window = new secondwindow;
-            window->setWindowFlags(Qt::Window | Qt::WindowMinimizeButtonHint | Qt::WindowMaximizeButtonHint | Qt::WindowCloseButtonHint);
-            window->show();
+            stackedWidget->setCurrentIndex(2);
         }
         else
         {
-            QMessageBox::warning(this, "Ошибка", "Ошибка при регистрации:\n" + reply->errorString());
+            QMessageBox::warning(this, "Ошибка", "Ошибка при регистрации:\n Неверный Логин или Пароль");
         }
         reply->deleteLater();
     });

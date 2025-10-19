@@ -12,6 +12,8 @@ class UserController : public HttpController<UserController>
         ADD_METHOD_TO(UserController::identification, "/identification", Post);
         ADD_METHOD_TO(UserController::registerUser, "/register", Post);
         ADD_METHOD_TO(UserController::loginUser, "/login", Post);
+        ADD_METHOD_TO(UserController::checkRole, "/checkrole", Post);
+        ADD_METHOD_TO(UserController::changeRole, "/changerole", Post);
         METHOD_LIST_END
         
         void identification(const HttpRequestPtr& req,
@@ -22,4 +24,10 @@ class UserController : public HttpController<UserController>
 
         bool loginUser(const HttpRequestPtr& req,
                        std::function<void(const HttpResponsePtr&)>&& callback);
+
+        bool changeRole(const HttpRequestPtr& req,
+                        std::function<void(const HttpResponsePtr&)>&& callback);
+        
+        bool checkRole(const HttpRequestPtr& req,
+                        std::function<void(const HttpResponsePtr&)>&& callback);
 };

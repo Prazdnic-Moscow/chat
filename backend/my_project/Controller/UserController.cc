@@ -158,4 +158,77 @@ bool UserController::loginUser(const HttpRequestPtr& req,
     callback(resp);
     return false; 
 }
+
+
+bool UserController::changeRole(const HttpRequestPtr& req,
+                                std::function<void(const HttpResponsePtr&)>&& callback)
+{
+    auto json = req->getJsonObject();
+    std::string machine_id = json->get("machine_id", "").asString();
+    std::string username = json->get("username", "").asString();
+
+    auto dbClient = drogon::app().getDbClient();
+    UserService userservice(dbClient);
+
+    if (userservice.identification(machine_id) == false)
+    {
+        auto resp = HttpResponse::newHttpResponse();
+        resp->setStatusCode(k400BadRequest);
+        callback(resp);
+        return false; 
+    }
+    LOG_DEBUG << "Прошел проверку при смене роли: [" << machine_id << "]";
+
+    UserData data = userservice.getUserByLogin(username);
+    int user_id = data.getId();
+
+    if (userservice.changeRole(user_id))
+    {
+        auto resp = HttpResponse::newHttpResponse();
+        resp->setStatusCode(k201Created);
+        callback(resp);
+        return true; 
+    }
+
+    auto resp = HttpResponse::newHttpResponse();
+    resp->setStatusCode(k400BadRequest);
+    callback(resp);
+    return false; 
+
+}
+
+bool UserController::checkRole(const HttpRequestPtr& req,
+                               std::function<void(const HttpResponsePtr&)>&& callback)
+{
+    auto json = req->getJsonObject();
+    std::string username = json->get("username", "").asString();
+    std::string machine_id = json->get("machine_id", "").asString();
+    auto dbClient = drogon::app().getDbClient();
+    UserService userservice(dbClient);
+    
+    if (userservice.identification(machine_id) == false)
+    {
+        auto resp = HttpResponse::newHttpResponse();
+        resp->setStatusCode(k400BadRequest);
+        callback(resp);
+        return false; 
+    }
+    LOG_DEBUG << "Прошел проверку при проверке роли: [" << machine_id << "]";
+
+    UserData data = userservice.getUserByLogin(username);
+    std::string rolename = data.getRole();
+
+    if (rolename == "admin")
+    {
+        auto resp = HttpResponse::newHttpResponse();
+        resp->setStatusCode(k200OK);
+        callback(resp);
+        return true; 
+    }
+
+    auto resp = HttpResponse::newHttpResponse();
+    resp->setStatusCode(k400BadRequest);
+    callback(resp);
+    return false; 
+}
                 

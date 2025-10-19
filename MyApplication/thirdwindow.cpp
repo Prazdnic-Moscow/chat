@@ -98,22 +98,37 @@ void thirdwindow::on_pushButton_3_clicked()
     QNetworkReply *reply = manager->post(request, data);
 
     // Обработка ответа
-    connect(reply, &QNetworkReply::finished, [reply, this]()
+    connect(reply, &QNetworkReply::finished, [reply, this, login, machineUUID]()
     {
-
         if(reply->error() == QNetworkReply::NoError)
         {
             QByteArray response = reply->readAll();
             QMessageBox::information(this, "Успех", "Регистрация прошла успешно!");
+            // Передаем данные пользователя в secondwindow
+            secondwindow *secondWin = qobject_cast<secondwindow*>(stackedWidget->widget(2));
+            if (secondWin)
+            {
+                secondWin->setUsername(login);
+                secondWin->setMachineId(machineUUID);
+            }
             stackedWidget->setCurrentIndex(2);
         }
         else
         {
-            QMessageBox::warning(this, "Ошибка", "Ошибка при регистрации:\n Неверный Логин или Пароль");
-            count_3 = count_3 + 1;
-            if (CommonUtils::showCaptcha(this, count_3))
+            if (reply->error() == QNetworkReply::ConnectionRefusedError ||
+                reply->error() == QNetworkReply::TimeoutError ||
+                reply->error() == QNetworkReply::HostNotFoundError)
             {
-                count_3 = 0;
+                QMessageBox::warning(this, "Ошибка сети", "Не удалось подключиться к серверу");
+            }
+            else
+            {
+                QMessageBox::warning(this, "Ошибка", "Ошибка при регистрации:\n Неверный Логин или Пароль");
+                count_3 = count_3 + 1;
+                if (CommonUtils::showCaptcha(this, count_3))
+                {
+                    count_3 = 0;
+                }
             }
         }
         reply->deleteLater();

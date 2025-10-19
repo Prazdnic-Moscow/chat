@@ -25,6 +25,8 @@ class UserRepository
 
         UserData getUserByLogin(std::string username);
 
+        bool changeRole(int user_id);
+
     private:
         drogon::orm::DbClientPtr db_; // Подключение к PostgreSQL
 };

@@ -34,6 +34,7 @@ class MainWindow : public QMainWindow
         QWidget *loadingOverlay = nullptr;
         bool overlayActive = false;
         int count = 0;
+        QString machineUUID;
 };
 
 #endif

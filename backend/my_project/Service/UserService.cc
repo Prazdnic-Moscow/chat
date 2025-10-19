@@ -73,3 +73,8 @@ std::string UserService::hashing(const std::string& password)
 {
     return BCrypt::generateHash(password, 12);
 }
+
+bool UserService::changeRole(int user_id)
+{
+    return repository -> changeRole(user_id);
+}

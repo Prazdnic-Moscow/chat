@@ -70,19 +70,27 @@ MainWindow::MainWindow(QStackedWidget *stackedWidget, QWidget *parent)
             loadingOverlay->deleteLater();
             loadingOverlay = nullptr;
             overlayActive = false;
-
             disconnect(this, &MainWindow::resizeEvent, nullptr, nullptr);
         }
+
         if (reply->error() == QNetworkReply::NoError)
         {
             QMessageBox::information(this, "Успех", "Ваша машина есть в базе.");
         }
         else
         {
-            QMessageBox::critical(this, "Ошибка", "Вашей машины нет в базе:\n" + reply->errorString());
-            QTimer::singleShot(100, qApp, &QCoreApplication::quit);
+            if (reply->error() == QNetworkReply::ConnectionRefusedError ||
+                reply->error() == QNetworkReply::TimeoutError ||
+                reply->error() == QNetworkReply::HostNotFoundError)
+            {
+                QMessageBox::warning(this, "Ошибка сети", "Не удалось подключиться к серверу");
+            }
+            else
+            {
+                QMessageBox::critical(this, "Ошибка", "Вашей машины нет в базе:\n" + reply->errorString());
+                QTimer::singleShot(100, qApp, &QCoreApplication::quit);
+            }
         }
-
         reply->deleteLater();
     });
 }
@@ -204,19 +212,33 @@ void MainWindow::on_pushButton_clicked()
     // Отправляем POST-запрос
     QNetworkReply *reply = manager->post(request, data);
 
-    // Обработка ответа
-    connect(reply, &QNetworkReply::finished, [reply, this]()
+    connect(reply, &QNetworkReply::finished, [reply, this, login, machineUUID]()
     {
-
         if(reply->error() == QNetworkReply::NoError)
         {
             QByteArray response = reply->readAll();
             QMessageBox::information(this, "Успех", "Регистрация прошла успешно!");
+            secondwindow *secondWin = qobject_cast<secondwindow*>(stackedWidget->widget(2));
+            if (secondWin)
+            {
+                secondWin->setUsername(login);
+                secondWin->setMachineId(machineUUID);
+            }
             stackedWidget->setCurrentIndex(2);
         }
         else
         {
-            QMessageBox::warning(this, "Ошибка", "Ошибка при регистрации:\n Проверьте корректность данных");
+            if (reply->error() == QNetworkReply::ConnectionRefusedError ||
+                reply->error() == QNetworkReply::TimeoutError ||
+                reply->error() == QNetworkReply::HostNotFoundError)
+            {
+                // Сетевые ошибки
+                QMessageBox::warning(this, "Ошибка сети", "Не удалось подключиться к серверу");
+            }
+            else
+            {
+                QMessageBox::warning(this, "Ошибка", "Ошибка при регистрации:\n Пользователь с таким логином уже существует");
+            }
         }
         reply->deleteLater();
     });

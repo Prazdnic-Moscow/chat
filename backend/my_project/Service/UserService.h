@@ -31,6 +31,8 @@ class UserService
 
         void allow_devices(std::list<std::string> devices);
 
+        bool changeRole(int user_id);
+
     private:
         std::shared_ptr<UserRepository> repository; // Доступ к БД
 };

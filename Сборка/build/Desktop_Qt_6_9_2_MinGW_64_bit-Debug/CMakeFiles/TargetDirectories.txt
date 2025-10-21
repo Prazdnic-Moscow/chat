@@ -1,0 +1,9 @@
+R:/informationsafe/lab1/MyApplication/build/Desktop_Qt_6_9_2_MinGW_64_bit-Debug/CMakeFiles/MyApplication.dir
+R:/informationsafe/lab1/MyApplication/build/Desktop_Qt_6_9_2_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
+R:/informationsafe/lab1/MyApplication/build/Desktop_Qt_6_9_2_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir
+R:/informationsafe/lab1/MyApplication/build/Desktop_Qt_6_9_2_MinGW_64_bit-Debug/CMakeFiles/list_install_components.dir
+R:/informationsafe/lab1/MyApplication/build/Desktop_Qt_6_9_2_MinGW_64_bit-Debug/CMakeFiles/install.dir
+R:/informationsafe/lab1/MyApplication/build/Desktop_Qt_6_9_2_MinGW_64_bit-Debug/CMakeFiles/install/local.dir
+R:/informationsafe/lab1/MyApplication/build/Desktop_Qt_6_9_2_MinGW_64_bit-Debug/CMakeFiles/install/strip.dir
+R:/informationsafe/lab1/MyApplication/build/Desktop_Qt_6_9_2_MinGW_64_bit-Debug/CMakeFiles/MyApplication_autogen_timestamp_deps.dir
+R:/informationsafe/lab1/MyApplication/build/Desktop_Qt_6_9_2_MinGW_64_bit-Debug/CMakeFiles/MyApplication_autogen.dir

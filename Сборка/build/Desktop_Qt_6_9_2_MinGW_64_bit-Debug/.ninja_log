@@ -1,0 +1,12 @@
+# ninja log v6
+11	1150	7827073786159337	MyApplication_autogen/timestamp	65dc856362aa98a7
+11	1150	7827073786159337	MyApplication_autogen/mocs_compilation.cpp	65dc856362aa98a7
+11	1150	7827073786159337	R:/informationsafe/lab1/MyApplication/build/Desktop_Qt_6_9_2_MinGW_64_bit-Debug/MyApplication_autogen/timestamp	65dc856362aa98a7
+11	1150	7827073786159337	R:/informationsafe/lab1/MyApplication/build/Desktop_Qt_6_9_2_MinGW_64_bit-Debug/MyApplication_autogen/mocs_compilation.cpp	65dc856362aa98a7
+1200	6189	7827073787629138	CMakeFiles/MyApplication.dir/commonutils.cpp.obj	8d34d1178b7cefcd
+1182	6270	7827073787439073	CMakeFiles/MyApplication.dir/main.cpp.obj	f45e9d24a87df8ea
+1155	6857	7827073787174622	CMakeFiles/MyApplication.dir/MyApplication_autogen/mocs_compilation.cpp.obj	e808293befd2d8ce
+1190	6927	7827073787529125	CMakeFiles/MyApplication.dir/secondwindow.cpp.obj	8e1bb7853d5e63b
+1195	6965	7827073787579114	CMakeFiles/MyApplication.dir/thirdwindow.cpp.obj	81d70ca72904b640
+1186	7120	7827073787479083	CMakeFiles/MyApplication.dir/mainwindow.cpp.obj	894a9c44fbe11693
+7120	7565	7827073846828194	MyApplication.exe	78ec376c1ee5f28c

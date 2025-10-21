@@ -75,7 +75,7 @@ MainWindow::MainWindow(QStackedWidget *stackedWidget, QWidget *parent)
 
         if (reply->error() == QNetworkReply::NoError)
         {
-            QMessageBox::information(this, "Успех", "Ваша машина есть в базе.");
+            QMessageBox::information(this, "Успех", "Ваша машина есть в базе");
         }
         else
         {
@@ -84,10 +84,11 @@ MainWindow::MainWindow(QStackedWidget *stackedWidget, QWidget *parent)
                 reply->error() == QNetworkReply::HostNotFoundError)
             {
                 QMessageBox::warning(this, "Ошибка сети", "Не удалось подключиться к серверу");
+                QTimer::singleShot(100, qApp, &QCoreApplication::quit);
             }
             else
             {
-                QMessageBox::critical(this, "Ошибка", "Вашей машины нет в базе:\n" + reply->errorString());
+                QMessageBox::critical(this, "Ошибка", "Вашей машины нет в базе\n");
                 QTimer::singleShot(100, qApp, &QCoreApplication::quit);
             }
         }

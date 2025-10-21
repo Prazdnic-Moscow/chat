@@ -166,6 +166,7 @@ bool UserController::changeRole(const HttpRequestPtr& req,
     auto json = req->getJsonObject();
     std::string machine_id = json->get("machine_id", "").asString();
     std::string username = json->get("username", "").asString();
+    std::string selfusername = json->get("selfusername", "").asString();
 
     auto dbClient = drogon::app().getDbClient();
     UserService userservice(dbClient);
@@ -182,18 +183,27 @@ bool UserController::changeRole(const HttpRequestPtr& req,
     UserData data = userservice.getUserByLogin(username);
     int user_id = data.getId();
 
-    if (userservice.changeRole(user_id))
+    if (selfusername == "creator")
     {
+        if (userservice.changeRole(user_id))
+        {
         auto resp = HttpResponse::newHttpResponse();
         resp->setStatusCode(k201Created);
         callback(resp);
         return true; 
+        }
+        auto resp = HttpResponse::newHttpResponse();
+        resp->setStatusCode(k400BadRequest);
+        callback(resp);
+        return false; 
     }
-
-    auto resp = HttpResponse::newHttpResponse();
-    resp->setStatusCode(k400BadRequest);
-    callback(resp);
-    return false; 
+    else
+    {
+        auto resp = HttpResponse::newHttpResponse();
+        resp->setStatusCode(k400BadRequest);
+        callback(resp);
+        return false; 
+    }
 
 }
 
@@ -218,7 +228,7 @@ bool UserController::checkRole(const HttpRequestPtr& req,
     UserData data = userservice.getUserByLogin(username);
     std::string rolename = data.getRole();
 
-    if (rolename == "admin")
+    if (rolename == "admin" || rolename == "creator")
     {
         auto resp = HttpResponse::newHttpResponse();
         resp->setStatusCode(k200OK);

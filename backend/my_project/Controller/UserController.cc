@@ -241,4 +241,74 @@ bool UserController::checkRole(const HttpRequestPtr& req,
     callback(resp);
     return false; 
 }
+
+bool UserController::verifyFileHash(const HttpRequestPtr& req,
+                                    std::function<void(const HttpResponsePtr&)>&& callback)
+{
+    LOG_DEBUG << "Зашли в метод verifyFileHash";
+    auto json = req->getJsonObject();
+    if (!json) 
+    {
+        auto resp = HttpResponse::newHttpJsonResponse("{\"error\":\"Invalid JSON\"}");
+        resp->setStatusCode(k400BadRequest);
+        callback(resp);
+        return false;
+    }
+    std::string current_hash = json->get("current_hash", "").asString();
+    std::string file_path = json->get("file_path", "").asString();
+
+    auto dbClient = drogon::app().getDbClient();
+    UserService userservice(dbClient);
+
+    if (userservice.verifyFileHash(current_hash, 
+                                   file_path))
+    {
+        auto resp = HttpResponse::newHttpResponse();
+        resp->setStatusCode(k200OK);
+        callback(resp);
+        return true; 
+    }
+    auto resp = HttpResponse::newHttpResponse();
+    resp->setStatusCode(k400BadRequest);
+    callback(resp);
+    return false; 
+}
+
+
+bool UserController::updateFileHash(const HttpRequestPtr& req,
+                                    std::function<void(const HttpResponsePtr&)>&& callback)
+{
+    LOG_DEBUG << "Зашли в метод updateFileHash";
+    auto json = req->getJsonObject();
+    if (!json) 
+    {
+        auto resp = HttpResponse::newHttpJsonResponse("{\"error\":\"Invalid JSON\"}");
+        resp->setStatusCode(k400BadRequest);
+        callback(resp);
+        return false;
+    }
+    std::string filePath = json->get("file_path", "").asString();
+    std::string newHash = json->get("new_hash", "").asString();
+    std::string username = json->get("username", "").asString();
+    std::string action = json->get("action", "").asString();
+
+    auto dbClient = drogon::app().getDbClient();
+    UserService userservice(dbClient);
+    UserData data = userservice.getUserByLogin(username);
+    std::string rolename = data.getRole();
+
+    if (userservice.updateFileHash(newHash,
+                               action,
+                               filePath) && (rolename == "admin" || rolename == "creator"))
+    {
+        auto resp = HttpResponse::newHttpResponse();
+        resp->setStatusCode(k200OK);
+        callback(resp);
+        return true; 
+    }
+    auto resp = HttpResponse::newHttpResponse();
+    resp->setStatusCode(k400BadRequest);
+    callback(resp);
+    return false; 
+}
                 

@@ -24,6 +24,9 @@ class secondwindow : public QDialog
 {
     Q_OBJECT
 
+protected:
+    void closeEvent(QCloseEvent *event) override;
+
 public:
     explicit secondwindow(QStackedWidget *stackedWidget = nullptr, QWidget *parent = nullptr);
     ~secondwindow();
@@ -34,6 +37,7 @@ private slots:
     void on_savedchange_clicked();
     void on_openfile_clicked();
     void on_radioButton3_clicked();
+    void on_createFile_clicked();
 
 private:
     Ui::secondwindow *ui;
@@ -42,5 +46,10 @@ private:
     QString username;
     QString machineUUID;
     QNetworkAccessManager *networkManager;
+    QString currentFileHash;
+    QString calculateFileHash(const QString &filePath);
+    QString getFileExtension(const QString &filePath);
+    QString simpleEncryptDecrypt(const QString &text);
+    QString simpleDecrypt(const QString &encrypted);
 };
 #endif

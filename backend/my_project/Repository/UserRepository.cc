@@ -138,3 +138,53 @@ bool UserRepository::changeRole(int user_id)
 
     return true;
 }
+
+bool UserRepository::updateFileHash(std::string newHash,
+                                    std::string action,
+                                    std::string filePath)
+{
+    try
+    {
+        if (action == "create")
+        {
+            auto result = db_->execSqlSync
+            (
+                "INSERT INTO hashfile (name, filepath) "
+                "VALUES ($1, $2) ", 
+                newHash, filePath
+            );
+            return true;
+        }
+        else
+        {
+            auto result = db_->execSqlSync
+            (
+                "UPDATE hashfile "
+                "SET name = $1 WHERE filepath = $2", 
+                newHash, filePath
+            );
+            return true;
+        }
+    }
+    catch(const std::exception& e)
+    {
+        return false;
+    }
+    
+}
+
+bool UserRepository::verifyFileHash(std::string Hash,
+                                    std::string file_path)
+{
+    auto result = db_->execSqlSync
+    (
+        "SELECT * FROM hashfile "
+        "WHERE name = $1 AND filepath = $2 ", 
+        Hash, file_path
+    );
+    if (result.empty())
+    {
+        return false;
+    }
+    return true;
+}

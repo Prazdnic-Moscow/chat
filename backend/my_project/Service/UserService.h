@@ -33,6 +33,13 @@ class UserService
 
         bool changeRole(int user_id);
 
+        bool updateFileHash(std::string newHash,
+                            std::string action,
+                            std::string filePath);
+
+        bool verifyFileHash(std::string Hash,
+                            std::string file_path);
+
     private:
         std::shared_ptr<UserRepository> repository; // Доступ к БД
 };

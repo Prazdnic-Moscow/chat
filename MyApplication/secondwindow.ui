@@ -68,6 +68,19 @@
          </widget>
         </item>
         <item>
+         <widget class="QPushButton" name="createFile">
+          <property name="font">
+           <font>
+            <family>Times New Roman</family>
+            <pointsize>15</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Создать файл</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QPushButton" name="openfile">
           <property name="font">
            <font>

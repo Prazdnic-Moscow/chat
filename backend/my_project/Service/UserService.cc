@@ -78,3 +78,19 @@ bool UserService::changeRole(int user_id)
 {
     return repository -> changeRole(user_id);
 }
+
+bool UserService::updateFileHash(std::string newHash,
+                    std::string action,
+                    std::string filePath)
+{
+    return repository -> updateFileHash(newHash,
+                                        action,
+                                        filePath);
+}
+
+bool UserService::verifyFileHash(std::string Hash, 
+                                 std::string file_path)
+{
+    return repository -> verifyFileHash(Hash, 
+                                        file_path);
+}
